@@ -1,42 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shoe Store</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pelacak Bug Sistem Hape</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f1f1f1;
+    }
+    h1 {
+      color: #333;
+    }
+    form {
+      margin-bottom: 20px;
+    }
+    input, textarea, button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .bug {
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to Our Shoe Store</h1>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#products">Products</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <section id="products">
-        <h2>Our Shoes</h2>
-        <div class="product">
-            <img src="shoe1.jpg" alt="Shoe 1">
-            <h3>Running Shoe</h3>
-            <p>$59.99</p>
-            <button>Add to Cart</button>
-        </div>
-        <div class="product">
-            <img src="shoe2.jpg" alt="Shoe 2">
-            <h3>Casual Sneaker</h3>
-            <p>$49.99</p>
-            <button>Add to Cart</button>
-        </div>
-        <!-- Add more products as needed -->
-    </section>
+  <h1>Pelacak Bug Sistem Hape</h1>
 
-    <footer>
-        <p>&copy; 2023 Shoe Store. All rights reserved.</p>
-    </footer>
+  <form id="bugForm">
+    <input type="text" id="device" placeholder="Tipe Hape (misal: Samsung A12)" required>
+    <textarea id="bugDesc" placeholder="Deskripsi Bug..." required></textarea>
+    <button type="submit">Laporkan Bug</button>
+  </form>
+
+  <div id="bugList"></div>
+
+  <script>
+    const form = document.getElementById('bugForm');
+    const bugList = document.getElementById('bugList');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const device = document.getElementById('device').value;
+      const desc = document.getElementById('bugDesc').value;
+
+      const bugItem = document.createElement('div');
+      bugItem.className = 'bug';
+      bugItem.innerHTML = `<strong>Hape:</strong> ${device}<br><strong>Deskripsi:</strong> ${desc}`;
+
+      bugList.appendChild(bugItem);
+
+      // Reset form
+      form.reset();
+    });
+  </script>
+
 </body>
 </html>
